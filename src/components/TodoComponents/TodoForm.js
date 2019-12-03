@@ -4,7 +4,7 @@ class TodoForm extends React.Component {
     constructor() {
         super();
         this.state = {
-            newTodo: ''
+            newTodo: '',
         };
     };
 
@@ -19,6 +19,10 @@ class TodoForm extends React.Component {
             newTodo: ''
         });
     };
+
+   handleComplete = e => {
+        this.setState({completed: !e.target.completed})
+   }
 
     render(){
         console.log('rendering form');

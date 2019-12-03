@@ -20,6 +20,7 @@ class App extends React.Component {
     this.state = {
       todos: todos,
       anotherTodo: '',
+      show: true,
     };
   };
 addTodo = newTodoText => {
@@ -29,9 +30,24 @@ addTodo = newTodoText => {
     completed: false,
   };
   this.setState({
-    todo: [...this.state.todos, newTodo]
+    todos: [...this.state.todos, newTodo]
   });
   };
+
+  handleComplete = e => {
+    console.log("correct!");
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        console.log(e.target);
+        if (todo.id===Number(e.target.id)) {
+          todo.completed=!todo.completed
+        }
+        return todo;
+      })
+    });
+  }
+
+  
 
   render() {
     console.log('rendering...');
@@ -39,7 +55,8 @@ addTodo = newTodoText => {
       <div>
         <h2>Time ToDo Me!</h2>
         <TodoForm addTodo={this.addTodo}/>
-        <TodoList todos={this.state.todos} />
+
+        <TodoList todos={this.state.todos} handleComplete={this.handleComplete} />
       </div>
     );
   }
