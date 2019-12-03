@@ -24,16 +24,17 @@ class App extends React.Component {
       show: true,
     };
   };
-addTodo = newTodoText => {
-  const newTodo = {
-    name: newTodoText,
-    id: Date.now(),
-    completed: false,
-  };
-  this.setState({
-    todos: [...this.state.todos, newTodo]
-  });
-  };
+  
+  addTodo = newTodoText => {
+    const newTodo = {
+      name: newTodoText,
+      id: Date.now(),
+      completed: false,
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    });
+    };
 
   handleComplete = e => {
     console.log("correct!");
@@ -56,15 +57,6 @@ addTodo = newTodoText => {
     }
 
   
-
-
-//   handleSubmit = e => {
-//     e.preventDefault();
-//     this.props.addTodo(this.state.newTodo);
-//     this.setState({
-//         newTodo: ''
-//     });
-// };
 
   render() {
     console.log('rendering...');

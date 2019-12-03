@@ -14,10 +14,15 @@ class TodoForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.addTodo(this.state.newTodo);
-        this.setState({
-            newTodo: ''
-        });
+        if(this.state.newTodo){
+
+            this.props.addTodo(this.state.newTodo);
+            this.setState({
+                newTodo: ''
+            });
+        }else{
+            alert('You must submit something.');
+        }
     };
 
 
