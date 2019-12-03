@@ -20,9 +20,7 @@ class TodoForm extends React.Component {
         });
     };
 
-   handleComplete = e => {
-        this.setState({completed: !e.target.completed})
-   }
+
 
     render(){
         console.log('rendering form');

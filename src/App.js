@@ -3,7 +3,8 @@ import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
 
-const todos = [
+
+const todosItems = [
   {
     name: 'Do Laundry',
     id: 123,
@@ -18,7 +19,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: todos,
+      todos: todosItems,
       anotherTodo: '',
       show: true,
     };
@@ -47,7 +48,23 @@ addTodo = newTodoText => {
     });
   }
 
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+    todos: this.state.todos.filter(todo => todo.completed !== true)  
+  })
+    }
+
   
+
+
+//   handleSubmit = e => {
+//     e.preventDefault();
+//     this.props.addTodo(this.state.newTodo);
+//     this.setState({
+//         newTodo: ''
+//     });
+// };
 
   render() {
     console.log('rendering...');
@@ -56,7 +73,7 @@ addTodo = newTodoText => {
         <h2>Time ToDo Me!</h2>
         <TodoForm addTodo={this.addTodo}/>
 
-        <TodoList todos={this.state.todos} handleComplete={this.handleComplete} />
+        <TodoList todos={this.state.todos} handleComplete={this.handleComplete} clearCompleted={this.clearCompleted} />
       </div>
     );
   }
