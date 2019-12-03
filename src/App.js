@@ -1,4 +1,7 @@
 import React from 'react';
+import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from './components/TodoComponents/TodoList';
+
 
 const todos = [
   {
@@ -35,6 +38,8 @@ addTodo = newTodoText => {
     return (
       <div>
         <h2>Time ToDo Me!</h2>
+        <TodoForm addTodo={this.addTodo}/>
+        <TodoList todos={this.state.todos} />
       </div>
     );
   }
